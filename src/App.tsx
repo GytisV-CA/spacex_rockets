@@ -1,5 +1,12 @@
+import './App.css';
+import RocketsList from './components/templates/RocketsList';
+
 function App() {
-  return <h1>Hello World</h1>;
+  return (
+    <div>
+      <RocketsList />
+    </div>
+  );
 }
 
 export default App;
