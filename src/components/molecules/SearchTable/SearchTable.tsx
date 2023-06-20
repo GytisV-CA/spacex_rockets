@@ -1,18 +1,25 @@
 import { useState } from 'react';
 
-interface ISearchableItem {
+export interface ISearchableItem {
   id: string;
-  searchFunction: (searchValue: string) => boolean;
 }
 
 interface ISearchTableProps {
   title?: string;
   data: ISearchableItem[];
+  // searchFunction: (searchValue: string) => boolean;
 }
 
-export default function SearchTable({ title = null, data }: ISearchTableProps) {
-  const [displayData, setDisplayData] = useState<ISearchableItem[]>([]);
+export default function SearchTable({ title, data }: ISearchTableProps) {
+  const [displayData, setDisplayData] = useState<ISearchableItem[]>(data);
   const [searchValue, setSearchValue] = useState('');
 
-  return <div>SearchTable</div>;
+  return (
+    <div>
+      {title && <h1>{title}</h1>}
+      {displayData.map((item) => (
+        <div>{item.id}</div>
+      ))}
+    </div>
+  );
 }

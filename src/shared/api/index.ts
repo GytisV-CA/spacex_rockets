@@ -6,6 +6,8 @@ class Api_instance {
   };
 
   constructor() {
+    console.log('Hello world this is Api_instance');
+
     const SpaceXDataApiBaseUrl = 'https://api.spacexdata.com/v3';
 
     this.SpaceXDataApi = {
@@ -14,6 +16,10 @@ class Api_instance {
   }
 
   public async getRockets(): Promise<Response> {
+    console.log('getRockets()');
+
+    console.log(this); //undefined???
+
     return fetch(this.SpaceXDataApi.rockets); //FIXME: clearly there's a better way to do this (without Axios?)
   }
 }
