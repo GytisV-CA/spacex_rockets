@@ -1,4 +1,3 @@
-import './App.css';
 import RocketsList from './components/templates/RocketsList';
 
 function App() {
