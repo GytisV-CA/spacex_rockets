@@ -4,13 +4,9 @@ import { IDisplayValueFormatter } from '../../atoms/DataFieldDisplay/DataFieldDi
 import DataDrivenSearchTable from '../../organisms/DataDrivenSearchTable';
 
 export default function RocketsList() {
-  const apiRef = useRef(API);
-
-  console.log(apiRef.current);
-
   return (
     <DataDrivenSearchTable
-      dataQuery={apiRef.current.getRockets}
+      dataQuery={() => API.getRockets()} //https://sentry.io/answers/bind-functions-in-components/
       title='SpaceX rockets'
     />
   );
