@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import SearchTable from '../../molecules/SearchTable';
-import { ISearchableItem } from '../../molecules/SearchTable/SearchTable';
+import SearchTable from '../SearchTable';
+import { ISearchableItem } from '../SearchTable/SearchTable';
 
 interface IDataDrivenSearchTableProps {
   dataQuery: () => Promise<Response>;
@@ -18,7 +18,7 @@ export default function DataDrivenSearchTable({
   const [error, setError] = useState<null | string>(null);
 
   useEffect(() => {
-    console.log('useEffect');
+    console.log('useEffect DataDrivenSearchTable');
 
     (async () => {
       try {
@@ -36,7 +36,7 @@ export default function DataDrivenSearchTable({
     return () => {
       // cleanup logic
     };
-  }, []);
+  }, [dataQuery]);
 
   return (
     <div>
