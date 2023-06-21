@@ -14,3 +14,9 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  background-color: #f5f5f6; /* ThemeProvider??? */
+
+  padding: 27px 45px; /* is this the right place? */
+}
