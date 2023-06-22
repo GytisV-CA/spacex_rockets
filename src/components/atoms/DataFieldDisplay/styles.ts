@@ -11,4 +11,6 @@ export const StyledDisplayField = styled.div<{
       : props.$align === 'center'
       ? 'center'
       : 'start'};
+
+  white-space: nowrap;
 `;

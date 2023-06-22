@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { ISort } from './Table';
 
 export const StyledTable = styled.div`
   display: grid;
@@ -24,7 +25,7 @@ const StyledTableBlock = styled.div<{ $column: number }>`
   }
 
   &:last-child {
-    padding-right: 46px;
+    padding-right: 70px;
     border-radius: 0 8px 8px 0;
   }
 `;
@@ -44,6 +45,8 @@ export const StyledTableCell = styled(StyledTableBlock)<{
 
 export const StyledTableColHeader = styled(StyledTableBlock)<{
   $column: number;
+  $sort: ISort['direction'];
+  $nextSortDirection: ISort['direction'];
   $align?: 'left' | 'center' | 'right';
 }>`
   grid-row: 1;
@@ -58,7 +61,37 @@ export const StyledTableColHeader = styled(StyledTableBlock)<{
       ? 'center'
       : 'start'};
 
-  font-weight: 500;
   line-height: 20px;
   padding-bottom: 7px;
+
+  font-weight: ${(props) => (props.$sort === 'none' ? 500 : 800)};
+  color: ${(props) => props.theme[props.$sort === 'none' ? 'text' : 'heading']};
+
+  /* cursor: ${(props) => {
+    switch (props.$nextSortDirection) {
+      case 'asc':
+        return 'n-resize';
+      case 'desc':
+        return 's-resize';
+      default:
+        return 'pointer';
+    }
+  }}; */
+
+  cursor: pointer;
+
+  /* https://stackoverflow.com/a/46373741 */
+  &::after {
+    margin-left: ${(props) => (props.$sort === 'none' ? 0 : '0.25em')};
+    content: '${(props) => {
+      switch (props.$sort) {
+        case 'asc':
+          return '▲';
+        case 'desc':
+          return '▼';
+        default:
+          return '';
+      }
+    }}';
+  }
 `;

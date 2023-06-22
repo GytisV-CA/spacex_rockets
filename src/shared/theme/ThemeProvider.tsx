@@ -6,6 +6,7 @@ const themeLight = {
   surface: '#FFFFFF',
   text: '#676C7E',
   label: '#676C7E',
+  heading: '#283049',
   input: '#F5F5FA',
   inputHover: '#F3F3F8',
   inputFocus: '#F1F1F6',
