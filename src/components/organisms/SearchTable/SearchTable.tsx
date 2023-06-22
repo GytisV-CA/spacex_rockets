@@ -3,7 +3,11 @@ import { DataTypeContext } from '../../../App';
 import Input from '../../atoms/Input';
 import Table from '../../molecules/Table';
 import searchIcon from '../../../assets/icon-search.svg';
-import { StyledSearchBox, StyledSearchTableContainer } from './styles';
+import {
+  StyledSearchBox,
+  StyledSearchTableContainer,
+  StyledTablePlaceholder,
+} from './styles';
 
 export interface ISearchableItem {
   id: string;
@@ -15,7 +19,7 @@ interface ISearchTableProps {
 }
 
 export default function SearchTable({ title, data }: ISearchTableProps) {
-  console.log('rendering DataDrivenSearchTable');
+  console.log('rendering SearchTable');
 
   const { searchFunction } = useContext(DataTypeContext);
 
@@ -46,7 +50,11 @@ export default function SearchTable({ title, data }: ISearchTableProps) {
           fullWidth
         />
       </StyledSearchBox>
-      <Table data={displayData} />
+      {displayData.length ? (
+        <Table data={displayData} />
+      ) : (
+        <StyledTablePlaceholder>Nothing to see here</StyledTablePlaceholder>
+      )}
     </StyledSearchTableContainer>
   );
 }
